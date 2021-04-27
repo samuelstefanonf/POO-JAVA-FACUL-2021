@@ -1,0 +1,91 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner vetor = new Scanner(System.in);
+         int i, j, l, m, qtdlinhas, qtdcolu;
+         int vetorA  [][];
+         int vetorB  [][];
+         int matriz180 [][];
+         int matriz270 [][];
+         int grau;
+          System.out.println("Informe a quantidade de linhas do vetor: ");
+          qtdlinhas = vetor.nextInt();
+          System.out.println("Informe a quantidade de colunas do vetor: ");
+          qtdcolu = vetor.nextInt();
+          vetorA = new int[qtdlinhas][qtdcolu];
+          vetorB = new int[qtdlinhas][qtdcolu];
+          matriz180 = new int[qtdlinhas][qtdcolu];
+          matriz270 = new int [qtdlinhas][qtdcolu];
+    for (i = 0; i < qtdlinhas; i ++){
+        for( j =0; j < qtdcolu; j++){
+            System.out.println(" Qual é o valor correnpondente a linha "+ i +" digite qual é o valor correspondente a coluna "+j);
+            vetorA[i][j]= vetor.nextInt();
+        }
+    }
+    System.out.println("Informe o grau para rodarmos a Vetor");
+    grau = vetor.nextInt();
+    if  (grau == 0) { 
+        System.out.println("Vetor em grau 0");
+         for( i =0; i< qtdlinhas; i++){
+            for( j =0; j < qtdcolu; j++){
+                System.out.print("["+vetorA[i][j]+"]");
+                }
+                 System.out.println();
+            }
+    } else if ( grau == 90){
+        System.out.println("Vetor em grau 90");
+        for (i =0; i< qtdlinhas; i++){
+           for(j=0; j< qtdcolu;j++){
+           vetorB[j][i]= vetorA[qtdlinhas-1-i][j];
+           }
+        }
+        for( i =0; i< qtdlinhas; i++){
+            for( j =0; j < qtdcolu; j++){
+            System.out.print("["+vetorB[i][j]+"]");
+            }
+            System.out.println();
+        }
+   }else if ( grau == 180){
+       System.out.println("Vetor em grau 180");
+        for (i =0; i< qtdlinhas; i++){
+           for(j=0; j< qtdcolu;j++){
+           vetorB[j][i]= vetorA[qtdlinhas-1-i][j];
+           }
+        }
+        for (l =0; l< qtdlinhas; l++){
+           for(m=0; m< qtdcolu;m++){
+           matriz180[m][l]= vetorB[qtdlinhas-1-l][m];
+           }
+        }
+        for( i =0; i< qtdlinhas; i++){
+          for( j =0; j < qtdcolu; j++){
+          System.out.print("["+matriz180[i][j]+"]");
+          }
+          System.out.println();
+        }
+    }else if (grau ==270){
+      System.out.println("Vetor em grau 270");
+        for (i =0; i< qtdlinhas; i++){
+           for(j=0; j< qtdcolu;j++){
+           matriz270[j][i]= vetorA[i][qtdlinhas - j - 1];
+           }
+        }
+        for( i =0; i< qtdlinhas; i++){
+          for( j =0; j < qtdcolu; j++){
+          System.out.print("["+matriz270[i][j]+"]");
+          }
+          System.out.println();
+        }
+    }else if (grau == 360){
+      System.out.println(" Vetor em 360 graus ");
+        for (j=0; j<qtdcolu; j++) {
+          for (i=0; i<qtdlinhas; i++) {
+            System.out.print("["+vetorA[j][i]+"]");
+          }
+          System.out.println();
+        }
+    }else{
+      System.out.println("Você digitou um grau indisponivel.");
+    }
+  }
+}
